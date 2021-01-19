@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Advice"
+    android:background="@drawable/image_1">
+
+    <TextView
+        android:id="@+id/question"
+        style="@style/AppTheme.TextView"
+        android:textSize="24sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/question_1"
+        android:background="@drawable/main_header_selector"
+        android:backgroundTint="@color/glass_white"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="40dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginHorizontal="30dp"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/option_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/question"
+        android:layout_marginVertical="30dp"
+        android:layout_marginHorizontal="30dp"
+        android:text="Do áp lực thời gian"
+        android:textColor="@color/white"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/option_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/option_1"
+        android:layout_marginVertical="30dp"
+        android:layout_marginHorizontal="30dp"
+        android:text="Cảm giác thiếu chắc chắn"
+        android:textColor="@color/white"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/option_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/option_2"
+        android:layout_marginVertical="30dp"
+        android:layout_marginHorizontal="30dp"
+        android:text="do sự kiện bất ngờ"
+        android:textColor="@color/white"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/option_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/option_3"
+        android:layout_marginVertical="30dp"
+        android:layout_marginHorizontal="30dp"
+        android:text="thẳng liên quan đến con người"
+        android:textColor="@color/white"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

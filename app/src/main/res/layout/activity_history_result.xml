@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".Results"
+    android:background="@drawable/image_1">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginVertical="30dp"
+        android:layout_marginHorizontal="30dp"
+        android:background="@drawable/main_header_selector"
+        android:backgroundTint="@color/glass_white">
+
+        <ImageView
+            android:id="@id/emotion"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="70dp"
+            android:src="@drawable/ic_in_love"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/purple_main" />
+
+        <LinearLayout
+            android:id="@id/bpmLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emotion">
+
+            <TextView
+                android:id="@id/bpmTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/purple_main"
+                android:layout_marginEnd="12dp"
+                android:fontFamily="@font/oswald_regular"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/bpm"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@id/bpmView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/purple_main"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/oswald_regular"
+                android:layout_weight="1"
+                android:text=""
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@id/avnnLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bpmLayout">
+
+            <TextView
+                android:id="@id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/purple_main"
+                android:layout_marginEnd="12dp"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/avrr"
+                android:fontFamily="@font/oswald_regular"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@id/avnnView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/purple_main"
+                android:fontFamily="@font/oswald_regular"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:text=""
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sdnnLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
+            android:weightSum="2"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/avnnLayout">
+
+            <TextView
+                android:id="@id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="12dp"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/sdrr"
+                android:textSize="24sp"
+                android:textColor="@color/purple_main"
+                android:fontFamily="@font/oswald_regular"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@id/sdnnView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:textColor="@color/purple_main"
+                android:fontFamily="@font/oswald_regular"
+                android:text=""
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@id/rmssdLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sdnnLayout">
+
+            <TextView
+                android:id="@id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="12dp"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/RMSsD"
+                android:textColor="@color/purple_main"
+                android:fontFamily="@font/oswald_regular"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@id/rmssdView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:textColor="@color/purple_main"
+                android:fontFamily="@font/oswald_regular"
+                android:text=""
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@id/stressLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="50dp"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rmssdLayout">
+
+            <TextView
+                android:id="@id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="12dp"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/stress"
+                android:textColor="@color/purple_main"
+                android:fontFamily="@font/oswald_regular"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@id/stressView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/oswald_regular"
+                android:textColor="@color/purple_main"
+                android:text=""
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/dateTimeView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/stressLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Time"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="20dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/oswald_medium"
+            android:textColor="@color/purple_main"
+            android:textAlignment="center"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Stress Detector</string>
+    <string name="button_Camera">Chẩn đoán</string>
+    <string name="button_History">Lịch sử</string>
+    <string name="title">Stress Detector</string>
+    <string name="instruction">Đặt ngón trỏ của bạn che phủ toàn bộ camera</string>
+    <string name="get_started">Bắt đầu</string>
+    <string name="ok_button">OK</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="request_permission">This sample needs camera permission.</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
+    <string name="avnn">Average of all NN intervals</string>
+    <string name="sdnn">Standard deviation of all NN intervals</string>
+    <string name="rmssd">Square root of the mean of the squares of differences between adjacent NN intervals</string>
+    <string name="pnn50">Percentage of differences between adjacent NN intervals that are greater than 50 ms</string>
+    <string name="processing">Đang xử lý...</string>
+    <string name="avrr">AVRR:</string>
+    <string name="sdrr">SDRR:</string>
+    <string name="RMSsD">rMSSD:</string>
+    <string name="stress">Stress:</string>
+    <string name="advice">Hiển thị lời khuyên?</string>
+    <string name="no_stress">Không có phát hiện căng thẳng tức thời, nhưng bạn có muốn...</string>
+    <string name="yes_stress">Có phát hiện căng thẳng! Bạn có muốn...</string>
+    <string name="bpm">BPM:</string>
+    <string name="question_1">Bạn cảm thấy tình trạng căng thẳng của bản thân giống với trường hợp nào nhất?</string>
+    <string name="stress_name">Căng thẳng</string>
+    <string name="stress_time">do áp lực thời gian</string>
+    <string name="stress_unconfident">do cảm giác thiếu chắc chắn</string>
+    <string name="stress_event">do sự kiện bất ngờ</string>
+    <string name="stress_people">liên quan đến con người</string>
+    <string name="des_stress_time">Bạn thấy mình khó mà hoàn thành công việc đúng giờ, và một ngày có 24 tiếng dường như chẳng đủ cho bạn.</string>
+    <string name="des_stress_unconfident">Bạn lo lắng về tương lai của bản thân, sợ việc thất bại, cảm thấy mình thua kém người khác,...</string>
+    <string name="des_stress_event">Có những chuyện không may xảy ra, và giờ bạn cảm thấy mọi thứ cứ rối tinh rối mù lên hết</string>
+    <string name="des_stress_people">Bạn cảm thấy mệt mỏi và sợ hãi khi phải tiếp xúc hay tương tác với người khác</string>
+    <string name="note_stress_time">Dù thế nào thì, việc bạn cố gắng đã rất đáng khen rồi đó! Đừng ép buộc bản thân quá nha!</string>
+    <string name="note_stress_unconfident">Hãy nhớ bạn là một con người tuyệt vời lắm luôn ý, và mọi thứ sẽ ổn thôi!</string>
+    <string name="note_stress_event">Rồi mọi chuyện sẽ qua, mong là bạn luôn giữ được sự lạc quan của mình nghe</string>
+    <string name="note_stress_people">Mỗi người có một tính cách và sức chịu đựng riêng. Ai cũng có lúc cảm thấy căng thẳng mà.</string>
+    <string name="loi_khuyen">Lời khuyên:</string>
+</resources>
