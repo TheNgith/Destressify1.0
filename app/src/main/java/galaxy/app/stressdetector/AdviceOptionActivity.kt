@@ -1,5 +1,6 @@
 package galaxy.app.stressdetector
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -25,6 +26,23 @@ class AdviceOptionActivity : AppCompatActivity() {
         note.text = getString(resources.getIdentifier(name, "string", pack))
         val suggest = optionMap[Advice.option]?.random()
         choice.text = suggest
+        button.setOnClickListener{ goToStress() }
+    }
+
+    private fun goToStress() {
+        val s = intent.extras
+        val bPM = s?.get("bPM") as String
+        val aVNN = s?.get("aVNN") as String
+        val sDNN = s?.get("sDNN") as String
+        val rMSSD = s?.get("rMSSD") as String
+        val predStress = s?.get("predStress") as String
+        val intent = Intent(applicationContext, StressQuest::class.java)
+        intent.putExtra("bPM", bPM)
+        intent.putExtra("aVNN", aVNN)
+        intent.putExtra("sDNN", sDNN)
+        intent.putExtra("rMSSD", rMSSD)
+        intent.putExtra("predStress", predStress)
+        startActivity(intent)
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {

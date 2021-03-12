@@ -30,7 +30,7 @@ class HistoryResult : AppCompatActivity() {
         val sdnn = receivedIntent.getDoubleExtra("SDNN", 0.0)
         val rmssd = receivedIntent.getDoubleExtra("RMSSD", 0.0)
         val ppn50 = receivedIntent.getDoubleExtra("PPN50", 0.0)
-        val stress = receivedIntent.getIntExtra("Stress", 0)
+        val stress = receivedIntent.getIntExtra("STRESS", 0)
 
         dateTimeView.text = dateTime
         bpmView.text = String.format("%.1f", bpm)

@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="galaxy.app.stressdetector">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -16,7 +18,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StressDetector">
-        <activity android:name=".AdviceOptionActivity"></activity>
+        <activity android:name=".StressQuest"></activity>
+        <activity android:name=".UsageInstruction" />
+        <activity android:name=".ThankYouActivity" />
+        <activity android:name=".pam" />
+        <activity android:name=".Survey" />
+        <activity android:name=".AdviceOptionActivity" />
         <activity android:name=".AdviceResultActivity" />
         <activity android:name=".Advice" />
         <activity android:name=".Title">

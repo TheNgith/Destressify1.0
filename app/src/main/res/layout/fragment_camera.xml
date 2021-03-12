@@ -33,11 +33,12 @@
                 android:id="@+id/heartAnim"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="20dp"
+                android:scaleType="center"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
-                app:lottie_rawRes="@raw/animation"
-                android:scaleType="center"
-                />
+                app:lottie_rawRes="@raw/animation" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -64,6 +65,17 @@
                 android:indeterminate="false"
                 android:layout_below="@id/textView5"
                 />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/progressBar"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/oswald_medium"
+                android:text="@string/tips"
+                android:textAlignment="center"
+                android:textSize="14sp" />
         </RelativeLayout>
 
     </RelativeLayout>

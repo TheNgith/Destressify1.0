@@ -1,10 +1,16 @@
 package galaxy.app.stressdetector
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings.Secure
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_title.*
+import java.util.*
+
 
 class Title : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,7 +18,12 @@ class Title : AppCompatActivity() {
         setContentView(R.layout.activity_title)
         val getStarted = findViewById<Button>(R.id.getStarted)
         getStarted.setOnClickListener{mainAc()}
+        button7.setOnClickListener{ goToInstruction() }
+    }
 
+    private fun goToInstruction() {
+        val intent = Intent(applicationContext, UsageInstruction::class.java)
+        startActivity(intent)
     }
 
     private fun mainAc(){

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.activity_advice.*
+import kotlinx.android.synthetic.main.activity_results.*
 
 class Advice : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,26 +17,70 @@ class Advice : AppCompatActivity() {
         option_4.setOnClickListener { option4() }
     }
     private fun option1(){
+        val s = intent.extras
+        val bPM = s?.get("bPM") as String
+        val aVNN = s?.get("aVNN") as String
+        val sDNN = s?.get("sDNN") as String
+        val rMSSD = s?.get("rMSSD") as String
+        val predStress = s?.get("predStress") as String
         option = "time"
         val intent = Intent(applicationContext, AdviceResultActivity::class.java)
+        intent.putExtra("bPM", bPM)
+        intent.putExtra("aVNN", aVNN)
+        intent.putExtra("sDNN", sDNN)
+        intent.putExtra("rMSSD", rMSSD)
+        intent.putExtra("predStress", predStress)
         startActivity(intent)
     }
 
     private fun option2(){
+        val s = intent.extras
+        val bPM = s?.get("bPM") as String
+        val aVNN = s?.get("aVNN") as String
+        val sDNN = s?.get("sDNN") as String
+        val rMSSD = s?.get("rMSSD") as String
+        val predStress = s?.get("predStress") as String
         option = "unconfident"
         val intent = Intent(applicationContext, AdviceResultActivity::class.java)
+        intent.putExtra("bPM", bPM)
+        intent.putExtra("aVNN", aVNN)
+        intent.putExtra("sDNN", sDNN)
+        intent.putExtra("rMSSD", rMSSD)
+        intent.putExtra("predStress", predStress)
         startActivity(intent)
     }
 
     private fun option3(){
+        val s = intent.extras
+        val bPM = s?.get("bPM") as String
+        val aVNN = s?.get("aVNN") as String
+        val sDNN = s?.get("sDNN") as String
+        val rMSSD = s?.get("rMSSD") as String
+        val predStress = s?.get("predStress") as String
         option = "event"
         val intent = Intent(applicationContext, AdviceResultActivity::class.java)
+        intent.putExtra("bPM", bPM)
+        intent.putExtra("aVNN", aVNN)
+        intent.putExtra("sDNN", sDNN)
+        intent.putExtra("rMSSD", rMSSD)
+        intent.putExtra("predStress", predStress)
         startActivity(intent)
     }
 
     private fun option4(){
+        val s = intent.extras
+        val bPM = s?.get("bPM") as String
+        val aVNN = s?.get("aVNN") as String
+        val sDNN = s?.get("sDNN") as String
+        val rMSSD = s?.get("rMSSD") as String
+        val predStress = s?.get("predStress") as String
         option = "people"
         val intent = Intent(applicationContext, AdviceResultActivity::class.java)
+        intent.putExtra("bPM", bPM)
+        intent.putExtra("aVNN", aVNN)
+        intent.putExtra("sDNN", sDNN)
+        intent.putExtra("rMSSD", rMSSD)
+        intent.putExtra("predStress", predStress)
         startActivity(intent)
     }
 

@@ -494,7 +494,7 @@ class CameraFragment : Fragment() {
                         CaptureRequest.CONTROL_AF_TRIGGER,
                         CameraMetadata.CONTROL_AF_TRIGGER_CANCEL
                 )
-                setAutoFlash(mPreviewRequestBuilder!!)
+//                setAutoFlash(mPreviewRequestBuilder!!)
                 //            mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON_AUTO_FLASH);
                 mCaptureSession!!.capture(
                         mPreviewRequestBuilder!!.build(), this,
@@ -564,7 +564,7 @@ class CameraFragment : Fragment() {
                                         CaptureRequest.CONTROL_AF_MODE,
                                         CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE
                                 )
-                                setAutoFlash(mPreviewRequestBuilder!!)
+//                                setAutoFlash(mPreviewRequestBuilder!!)
                                 mPreviewRequest = mPreviewRequestBuilder!!.build()
                                 mCaptureSession!!.setRepeatingRequest(
                                         mPreviewRequest!!,

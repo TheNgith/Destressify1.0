@@ -18,8 +18,20 @@ class MainActivity : AppCompatActivity() {
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         cameraButton.setOnClickListener{showInstruction()}
+        everydayButton.setOnClickListener{goToEveryday()}
         historyButton.setOnClickListener{showHistory()}
         dbHandler = MyDBHandler(applicationContext)
+        button8.setOnClickListener{ goToInstruction() }
+    }
+
+    private fun goToEveryday() {
+        val intent = Intent(applicationContext, Survey::class.java)
+        startActivity(intent)
+    }
+
+    private fun goToInstruction() {
+        val intent = Intent(applicationContext, UsageInstruction::class.java)
+        startActivity(intent)
     }
 
     private fun showInstruction(){
@@ -57,8 +69,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        val RECORDING_TIME = 15.0
-        val CUTOFF_TIME = 5.0
+        val RECORDING_TIME = 32.0
+        val CUTOFF_TIME = 14.0
         var dbHandler : MyDBHandler? = null
     }
     override fun onWindowFocusChanged(hasFocus: Boolean) {

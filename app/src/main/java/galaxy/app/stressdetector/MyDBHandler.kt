@@ -5,13 +5,14 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import java.sql.SQLException
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
 
 class MyDBHandler(context: Context?) :
-    SQLiteOpenHelper(context, DATABASE_NAME, null, 7) {
+    SQLiteOpenHelper(context, DATABASE_NAME, null, 8) {
     override fun onCreate(db: SQLiteDatabase) {
         val CREATE_TABLE =
             "CREATE TABLE " + TABLE_NAME + "(" +
@@ -28,10 +29,12 @@ class MyDBHandler(context: Context?) :
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         // Add a column
-        if (newVersion > oldVersion) {
-            db.execSQL("DELETE FROM HeartRate")
-            db.execSQL("AlTER TABLE $TABLE_NAME ADD COLUMN $COLUMN_STRESS")
+        try {
+            db.execSQL("ALTER TABLE $TABLE_NAME" + " ADD COLUMN $COLUMN_STRESS")
+        } catch (e: SQLException) {
+            Log.i("ADD COLUMN STRESS", "Stress already exists")
         }
+
     }
     fun loadHandler(): ArrayList<ArrayList<Any>> {
         val result =

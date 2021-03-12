@@ -22,8 +22,18 @@ class AdviceResultActivity : AppCompatActivity() {
             override fun onTouch(v: View?, event: MotionEvent?): Boolean {
                 when (event?.action) {
                     MotionEvent.ACTION_DOWN -> {
+                        val s = intent.extras
+                        val bPM = s?.get("bPM") as String
+                        val aVNN = s?.get("aVNN") as String
+                        val sDNN = s?.get("sDNN") as String
+                        val rMSSD = s?.get("rMSSD") as String
+                        val predStress = s?.get("predStress") as String
                         val intent = Intent(applicationContext, AdviceOptionActivity::class.java)
-
+                        intent.putExtra("bPM", bPM)
+                        intent.putExtra("aVNN", aVNN)
+                        intent.putExtra("sDNN", sDNN)
+                        intent.putExtra("rMSSD", rMSSD)
+                        intent.putExtra("predStress", predStress)
                         startActivity(intent)
                     }
                 }

@@ -1,68 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/image_1"
     android:fitsSystemWindows="true"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cameraButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="90dp"
-        android:layout_marginHorizontal="40dp"
-        app:cardBackgroundColor="@android:color/transparent"
-        app:cardElevation="0dp"
-        app:layout_constraintBottom_toTopOf="@id/historyButton"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/main_header_selector"
-            android:backgroundTint="@color/glass_white"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="369dp"
+        android:layout_height="279dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="bottom|center|center_horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/button8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cameraButton"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
             android:gravity="center"
-            android:orientation="vertical"
-            android:paddingVertical="40dp">
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/ic_heartbeat"
-                app:tint="@color/purple_main"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"
-                />
-            <TextView
-                android:layout_width="wrap_content"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardElevation="0dp">
+
+
+            <LinearLayout
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:text="@string/button_Camera"
-                android:textSize="28sp"
-                android:fontFamily="@font/oswald_bold"
-                android:textColor="@color/purple_main"/>
-        </LinearLayout>
+                android:background="@drawable/main_header_selector"
+                android:backgroundTint="@color/glass_white"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingVertical="40dp">
 
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="hearticon"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_heartbeat"
+                    app:tint="@color/purple_main" />
 
-    </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/oswald_bold"
+                    android:text="@string/button_Camera"
+                    android:textColor="@color/purple_main"
+                    android:textSize="28sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/everydayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/main_header_selector"
+                android:backgroundTint="@color/glass_white"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingVertical="40dp">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="daily_icon"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_daily"
+                    app:tint="@color/purple_main" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/oswald_bold"
+                    android:text="@string/everyday_title"
+                    android:textColor="@color/purple_main"
+                    android:textSize="28sp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/historyButton"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_marginBottom="90dp"
+        android:layout_height="225dp"
         android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="16dp"
         app:cardBackgroundColor="@android:color/transparent"
         app:cardElevation="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cameraButton"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button8">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -71,24 +118,41 @@
             android:gravity="center"
             android:orientation="vertical"
             android:paddingVertical="40dp">
+
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/ic_medical_folder"
-                app:tint="@color/purple_main"
-                android:scaleType="fitCenter"
                 android:adjustViewBounds="true"
-                />
+                android:contentDescription="historyicon"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_medical_folder"
+                app:tint="@color/purple_main" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/button_History"
-                android:textSize="28sp"
                 android:fontFamily="@font/oswald_bold"
-                android:textColor="@color/purple_main"/>
+                android:text="@string/button_History"
+                android:textColor="@color/purple_main"
+                android:textSize="28sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/usage_instruction"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

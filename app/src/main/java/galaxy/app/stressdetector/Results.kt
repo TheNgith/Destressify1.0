@@ -85,11 +85,21 @@ class Results : AppCompatActivity() {
                 dbHandler.addHandler(hData)
             }
         }
+        //upload data
         advice_show.setOnClickListener { startAdvice() }
     }
 
     private fun startAdvice(){
+        val bpm = String.format("%.1f", heartData?.bPM)
+        val avnn = String.format("%.3f", heartData?.aVNN)
+        val sdnn = String.format("%.3f", heartData?.sDNN)
+        val rmssd = String.format("%.3f", heartData?.rMSSD)
         val intent = Intent(applicationContext, Advice::class.java)
+        intent.putExtra("bPM", bpm)
+        intent.putExtra("aVNN", avnn)
+        intent.putExtra("sDNN", sdnn)
+        intent.putExtra("rMSSD", rmssd)
+        intent.putExtra("predStress", stressView.text)
         startActivity(intent)
     }
 
