@@ -48,14 +48,14 @@
     <string name="instruction_after_advice">Chạm vào màn hình để tiếp tục</string>
     <string name="return_home_page">Trở về màn hình chính</string>
     <string name="thank_you">Bạn đã hoàn thành!</string>
-    <string name="usage_instruction">Hướng dẫn</string>
+    <string name="usage_instruction">Hướng dẫn sử dụng</string>
     <string name="usage_instruction_text">Hướng dẫn sử dụng</string>
     <string name="usage_instruction1">Cảm ơn bạn đã tham gia cùng chúng mình xây dựng bộ dữ liệu về stress cho học sinh!</string>
-    <string name="usage_instruction2_1">Những điều bạn cần làm:</string>
+    <string name="usage_instruction2_1">1. Những điều bạn cần làm:</string>
     <string name="usage_instruction2_2">Sử dụng tính năng "Chẩn đoán" 5–10 lần/ngày và tính năng "Ngày qua" 1 lần/ngày.</string>
-<string name="usage_instruction2_3">Nếu bạn chưa hoàn thành khảo sát dành cho tình nguyện viên thì hãy copy UserCode phía dưới và ấn vào nút "Perceived Stress" để hoàn thành khảo sát nhé!</string>
+    <string name="usage_instruction2_3">Nếu bạn chưa hoàn thành khảo sát dành cho tình nguyện viên thì hãy copy UserCode phía dưới và ấn vào nút "Perceived Stress" để hoàn thành khảo sát nhé!</string>
     <string name="perceived_stress_button">Perceived Stress</string>
-    <string name="UserCode_title">UserCode của bạn</string>
+    <string name="UserCode_title">2. UserCode của bạn</string>
     <string name="quest_steps">Hôm nay bạn đã đi bao nhiêu bước?</string>
     <string name="hint_steps">Nhập số bước đi</string>
     <string name="done">Xong</string>
@@ -64,5 +64,8 @@
     <string name="ans_no">Không</string>
     <string name="everyday_title">Ngày qua</string>\
     <string name="tips">Mẹo: nếu kết quả đo cho ra BPM (dòng đầu tiên) nhỏ hơn 70 hoặc lớn hơn 120 thì bạn hãy đo lại nhé. Chú ý đặt ngón tay tiếp xúc và che phủ toàn bộ camera và thực hiện đo ở nơi có nhiều ánh sáng.</string>
-
+    <string name="notify_button">Tự động thông báo cho người thân khi stress liên tục kéo dài 1 tháng</string>
+    <string name="instruction_notify">3. Tự động thông báo cho người thân</string>
+    <string name="instruction_notify_content">Dựa vào dữ liệu đo được hằng tháng của bạn, Stress Detector sẽ phát đi cảnh báo đến những người thân bạn thêm vào danh sách dưới đây để họ biết về tình trạng căng thẳng kéo dài của bạn</string>
+    <string name="family_list">Danh sách người thân</string>
 </resources>
