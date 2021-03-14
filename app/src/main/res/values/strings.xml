@@ -68,4 +68,8 @@
     <string name="instruction_notify">3. Tự động thông báo cho người thân</string>
     <string name="instruction_notify_content">Dựa vào dữ liệu đo được hằng tháng của bạn, Stress Detector sẽ phát đi cảnh báo đến những người thân bạn thêm vào danh sách dưới đây để họ biết về tình trạng căng thẳng kéo dài của bạn</string>
     <string name="family_list">Danh sách người thân</string>
+    <string name="hint_name">Tên người thân</string>
+    <string name="hint_rela">Quan hệ</string>
+    <string name="hint_info">Email/Điện thoại</string>
+    <string name="notify_activity_header">Danh sách người thân</string>
 </resources>

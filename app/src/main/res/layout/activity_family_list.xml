@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    tools:context=".familyList">
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:text="@string/done"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/oswald_bold"
+        android:text="@string/notify_activity_header"
+        android:textColor="#9C27B0"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView21">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/contact_1_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:ems="10"
+                android:fontFamily="@font/oswald_light"
+                android:hint="@string/hint_name"
+                android:inputType="textPersonName"
+                android:textColor="#9C27B0" />
+
+            <EditText
+                android:id="@+id/contact_1_rela"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:autofillHints=""
+                android:ems="10"
+                android:fontFamily="@font/oswald_light"
+                android:hint="@string/hint_rela"
+                android:inputType="textPersonName"
+                android:textColor="#9C27B0" />
+
+            <EditText
+                android:id="@+id/contact_1_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:autofillHints=""
+                android:ems="10"
+                android:fontFamily="@font/oswald_light"
+                android:hint="@string/hint_info"
+                android:inputType="textPersonName"
+                android:textColor="#9C27B0" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/contact_2_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:ems="10"
+                android:fontFamily="@font/oswald_light"
+                android:hint="@string/hint_name"
+                android:inputType="textPersonName"
+                android:textColor="#9C27B0" />
+
+            <EditText
+                android:id="@+id/contact_2_rela"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ems="10"
+                android:fontFamily="@font/oswald_light"
+                android:hint="@string/hint_rela"
+                android:inputType="textPersonName"
+                android:textColor="#9C27B0" />
+
+            <EditText
+                android:id="@+id/contact_2_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:ems="10"
+                android:fontFamily="@font/oswald_light"
+                android:hint="@string/hint_info"
+                android:inputType="textPersonName"
+                android:textColor="#9C27B0" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/contact_3_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:fontFamily="@font/oswald_light"
+                android:hint="@string/hint_name"
+                android:inputType="textPersonName"
+                android:textColor="#9C27B0" />
+
+            <EditText
+                android:id="@+id/contact_3_rela"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ems="10"
+                android:fontFamily="@font/oswald_light"
+                android:hint="@string/hint_rela"
+                android:inputType="textPersonName"
+                android:textColor="#9C27B0" />
+
+            <EditText
+                android:id="@+id/contact_3_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:ems="10"
+                android:fontFamily="@font/oswald_light"
+                android:hint="@string/hint_info"
+                android:inputType="textPersonName"
+                android:textColor="#9C27B0" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/contact_4_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:fontFamily="@font/oswald_light"
+                android:hint="@string/hint_name"
+                android:inputType="textPersonName"
+                android:textColor="#9C27B0" />
+
+            <EditText
+                android:id="@+id/contact_4_rela"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ems="10"
+                android:fontFamily="@font/oswald_light"
+                android:hint="@string/hint_rela"
+                android:inputType="textPersonName"
+                android:textColor="#9C27B0" />
+
+            <EditText
+                android:id="@+id/contact_4_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:ems="10"
+                android:fontFamily="@font/oswald_light"
+                android:hint="@string/hint_info"
+                android:inputType="textPersonName"
+                android:textColor="#9C27B0" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/contact_5_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:fontFamily="@font/oswald_light"
+                android:hint="@string/hint_name"
+                android:inputType="textPersonName"
+                android:textColor="#9C27B0" />
+
+            <EditText
+                android:id="@+id/contact_5_rela"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ems="10"
+                android:fontFamily="@font/oswald_light"
+                android:hint="@string/hint_rela"
+                android:inputType="textPersonName"
+                android:textColor="#9C27B0" />
+
+            <EditText
+                android:id="@+id/contact_5_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:ems="10"
+                android:fontFamily="@font/oswald_light"
+                android:hint="@string/hint_info"
+                android:inputType="textPersonName"
+                android:textColor="#9C27B0" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
