@@ -10,6 +10,41 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_family_list.*
 
 class familyList : AppCompatActivity() {
+
+    val viewName1 = findViewById<EditText>(R.id.contact_1_name)
+    val viewName2 = findViewById<EditText>(R.id.contact_2_name)
+    val viewName3 = findViewById<EditText>(R.id.contact_3_name)
+    val viewName4 = findViewById<EditText>(R.id.contact_4_name)
+    val viewName5 = findViewById<EditText>(R.id.contact_5_name)
+
+    val viewRela1 = findViewById<EditText>(R.id.contact_1_rela)
+    val viewRela2 = findViewById<EditText>(R.id.contact_2_rela)
+    val viewRela3 = findViewById<EditText>(R.id.contact_3_rela)
+    val viewRela4 = findViewById<EditText>(R.id.contact_4_rela)
+    val viewRela5 = findViewById<EditText>(R.id.contact_5_rela)
+
+    val viewInfo1 = findViewById<EditText>(R.id.contact_1_info)
+    val viewInfo2 = findViewById<EditText>(R.id.contact_2_info)
+    val viewInfo3 = findViewById<EditText>(R.id.contact_3_info)
+    val viewInfo4 = findViewById<EditText>(R.id.contact_4_info)
+    val viewInfo5 = findViewById<EditText>(R.id.contact_5_info)
+
+    val name1 = viewName1.text.toString()
+    val name2 = viewName2.text.toString()
+    val name3 = viewName3.text.toString()
+    val name4 = viewName4.text.toString()
+    val name5 = viewName5.text.toString()
+    val rela1 = viewRela1.text.toString()
+    val rela2 = viewRela2.text.toString()
+    val rela3 = viewRela3.text.toString()
+    val rela4 = viewRela4.text.toString()
+    val rela5 = viewRela5.text.toString()
+    val info1 = viewInfo1.text.toString()
+    val info2 = viewInfo2.text.toString()
+    val info3 = viewInfo3.text.toString()
+    val info4 = viewInfo4.text.toString()
+    val info5 = viewInfo5.text.toString()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_family_list)
@@ -20,23 +55,6 @@ class familyList : AppCompatActivity() {
     var SHARED_PREFS = "sharedPrefs"
 
     private fun loadData() {
-        val viewName1 = findViewById<EditText>(R.id.contact_1_name)
-        val viewName2 = findViewById<EditText>(R.id.contact_2_name)
-        val viewName3 = findViewById<EditText>(R.id.contact_3_name)
-        val viewName4 = findViewById<EditText>(R.id.contact_4_name)
-        val viewName5 = findViewById<EditText>(R.id.contact_5_name)
-
-        val viewRela1 = findViewById<EditText>(R.id.contact_1_rela)
-        val viewRela2 = findViewById<EditText>(R.id.contact_2_rela)
-        val viewRela3 = findViewById<EditText>(R.id.contact_3_rela)
-        val viewRela4 = findViewById<EditText>(R.id.contact_4_rela)
-        val viewRela5 = findViewById<EditText>(R.id.contact_5_rela)
-
-        val viewInfo1 = findViewById<EditText>(R.id.contact_1_info)
-        val viewInfo2 = findViewById<EditText>(R.id.contact_2_info)
-        val viewInfo3 = findViewById<EditText>(R.id.contact_3_info)
-        val viewInfo4 = findViewById<EditText>(R.id.contact_4_info)
-        val viewInfo5 = findViewById<EditText>(R.id.contact_5_info)
 
         val sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         val load_name1 = sharedPreferences.getString("NAME1", "")
@@ -76,39 +94,6 @@ class familyList : AppCompatActivity() {
 
     @SuppressLint("HardwareIds")
     private fun updateContact() {
-        val viewName1 = findViewById<EditText>(R.id.contact_1_name)
-        val viewName2 = findViewById<EditText>(R.id.contact_2_name)
-        val viewName3 = findViewById<EditText>(R.id.contact_3_name)
-        val viewName4 = findViewById<EditText>(R.id.contact_4_name)
-        val viewName5 = findViewById<EditText>(R.id.contact_5_name)
-
-        val viewRela1 = findViewById<EditText>(R.id.contact_1_rela)
-        val viewRela2 = findViewById<EditText>(R.id.contact_2_rela)
-        val viewRela3 = findViewById<EditText>(R.id.contact_3_rela)
-        val viewRela4 = findViewById<EditText>(R.id.contact_4_rela)
-        val viewRela5 = findViewById<EditText>(R.id.contact_5_rela)
-
-        val viewInfo1 = findViewById<EditText>(R.id.contact_1_info)
-        val viewInfo2 = findViewById<EditText>(R.id.contact_2_info)
-        val viewInfo3 = findViewById<EditText>(R.id.contact_3_info)
-        val viewInfo4 = findViewById<EditText>(R.id.contact_4_info)
-        val viewInfo5 = findViewById<EditText>(R.id.contact_5_info)
-
-        val name1 = viewName1.text.toString()
-        val name2 = viewName2.text.toString()
-        val name3 = viewName3.text.toString()
-        val name4 = viewName4.text.toString()
-        val name5 = viewName5.text.toString()
-        val rela1 = viewRela1.text.toString()
-        val rela2 = viewRela2.text.toString()
-        val rela3 = viewRela3.text.toString()
-        val rela4 = viewRela4.text.toString()
-        val rela5 = viewRela5.text.toString()
-        val info1 = viewInfo1.text.toString()
-        val info2 = viewInfo2.text.toString()
-        val info3 = viewInfo3.text.toString()
-        val info4 = viewInfo4.text.toString()
-        val info5 = viewInfo5.text.toString()
 
         val androidID = Settings.Secure.getString(this.contentResolver, Settings.Secure.ANDROID_ID)
         val rootNode = FirebaseDatabase.getInstance()
@@ -139,41 +124,6 @@ class familyList : AppCompatActivity() {
     private fun saveData() {
         val sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-
-        val viewName1 = findViewById<EditText>(R.id.contact_1_name)
-        val viewName2 = findViewById<EditText>(R.id.contact_2_name)
-        val viewName3 = findViewById<EditText>(R.id.contact_3_name)
-        val viewName4 = findViewById<EditText>(R.id.contact_4_name)
-        val viewName5 = findViewById<EditText>(R.id.contact_5_name)
-
-        val viewRela1 = findViewById<EditText>(R.id.contact_1_rela)
-        val viewRela2 = findViewById<EditText>(R.id.contact_2_rela)
-        val viewRela3 = findViewById<EditText>(R.id.contact_3_rela)
-        val viewRela4 = findViewById<EditText>(R.id.contact_4_rela)
-        val viewRela5 = findViewById<EditText>(R.id.contact_5_rela)
-
-        val viewInfo1 = findViewById<EditText>(R.id.contact_1_info)
-        val viewInfo2 = findViewById<EditText>(R.id.contact_2_info)
-        val viewInfo3 = findViewById<EditText>(R.id.contact_3_info)
-        val viewInfo4 = findViewById<EditText>(R.id.contact_4_info)
-        val viewInfo5 = findViewById<EditText>(R.id.contact_5_info)
-
-        val name1 = viewName1.text.toString()
-        val name2 = viewName2.text.toString()
-        val name3 = viewName3.text.toString()
-        val name4 = viewName4.text.toString()
-        val name5 = viewName5.text.toString()
-        val rela1 = viewRela1.text.toString()
-        val rela2 = viewRela2.text.toString()
-        val rela3 = viewRela3.text.toString()
-        val rela4 = viewRela4.text.toString()
-        val rela5 = viewRela5.text.toString()
-        val info1 = viewInfo1.text.toString()
-        val info2 = viewInfo2.text.toString()
-        val info3 = viewInfo3.text.toString()
-        val info4 = viewInfo4.text.toString()
-        val info5 = viewInfo5.text.toString()
-
 
         editor.putString("NAME1", name1)
         editor.putString("NAME2", name2)
