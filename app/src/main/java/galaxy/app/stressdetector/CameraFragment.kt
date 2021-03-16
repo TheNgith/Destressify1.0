@@ -54,7 +54,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [CameraFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class CameraFragment : Fragment() {
+class CameraFragment() : Fragment() {
     // TODO: Rename and change types of parameters
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -487,7 +487,7 @@ class CameraFragment : Fragment() {
             }
         }
 
-        private fun unlockFocus() {
+        private fun unlockFocus(state: String) {
             try {
                 // Reset the auto-focus trigger
                 mPreviewRequestBuilder!!.set(

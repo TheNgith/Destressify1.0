@@ -2,22 +2,30 @@ package galaxy.app.stressdetector
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
 import android.widget.Switch
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
+import java.time.LocalDate
+import java.time.Period
+import java.time.format.DateTimeFormatter
 
 
 class MainActivity : AppCompatActivity() {
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,48 +37,127 @@ class MainActivity : AppCompatActivity() {
         dbHandler = MyDBHandler(applicationContext)
         button8.setOnClickListener{ goToInstruction() }
         loadSwitch()
-        val numberOfStressDay = checkSwitchandGetNumberOfStressDay()
-        if (numberOfStressDay > 30) {
-            contactParent()
+        val listStressDay = checkSwitchandGetNumberOfStressDay()
+        if (listStressDay.size > 30) {
+            val returnString = consecutive(listStressDay)
+            val consecutive = returnString.substring(1..returnString.length).toBoolean()
+            if (consecutive) {
+                contactParent()
+            }
         }
+    }
+    var SHARED_PREFS = "sharedPrefs"
+
+    @SuppressLint("CommitPrefEdits")
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun consecutive(listStressDay: ArrayList<String>): String {
+        //Did not try SharedPreferences
+        var returnString = ""
+        val listStressDay = sortDayList(listStressDay)
+        val sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        val k = sharedPreferences.getString("returnString", "0false")?.get(0)?.toInt()
+        for (i in 0..k!!) {
+            listStressDay.removeAt(0)
+        }
+        val earliestDay = listStressDay[0]
+
+        //for loop to find the earliest day in array
+//        for (i in 1 until listStressDay.size) {
+//            val item = listStressDay[i]
+//            val date = LocalDate.parse(item, DateTimeFormatter.ofPattern("dd-M-yyyy"))
+//            if (date.isBefore(LocalDate.parse(earliestDay, DateTimeFormatter.ofPattern("dd-M-yyyy")))) {
+//                earliestDay = date.toString()
+//            }
+//        }
+
+        val alreadyCheckedDay = ArrayList<String>()
+        val period = Period.of(0,0,1)
+        var still = true
+        var currentDay = LocalDate.parse(earliestDay, DateTimeFormatter.ofPattern("dd-M-yyyy"))
+        var nextDay = currentDay.plus(period)
+        var numOfConsecutiveDay = 0
+        while (still) {
+            if (listStressDay.contains(nextDay.toString())) {
+                alreadyCheckedDay.add(currentDay.toString())
+                currentDay = nextDay
+                nextDay = currentDay.plus(period)
+                numOfConsecutiveDay += 1
+            }
+            else {
+                still = false
+                var k = listStressDay.indexOf(currentDay.toString())
+                val q = k
+                var m = -1
+                while (k != -1) {
+                    m += 1
+                    for (i in 0..k) {
+                        listStressDay.removeAt(0)
+                    k = listStressDay.indexOf(currentDay.toString())
+                    }
+                }
+                returnString += (m+q).toString()
+            }
+        }
+        if (numOfConsecutiveDay < 30) {
+            still = false
+        }
+        returnString += still.toString()
+        editor.putString("returnString", returnString)
+        editor.apply()
+        return returnString
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun sortDayList(listStressDay: ArrayList<String>): ArrayList<String> {
+        var temp = ""
+        val n = listStressDay.size
+        for (i in 0 until n-1) {
+            for (j in i until n-1) {
+                if (LocalDate.parse(listStressDay[i], DateTimeFormatter.ofPattern("dd-M-yyyy")).isBefore(LocalDate.parse(listStressDay[j], DateTimeFormatter.ofPattern("dd-M-yyyy")))) {
+                    temp = listStressDay[i]
+                    listStressDay[i] = listStressDay[j]
+                    listStressDay[j] = temp
+                }
+            }
+        }
+        return listStressDay
     }
 
     private fun contactParent() {
         TODO()
     }
 
-    @SuppressLint("HardwareIds")
-    val androidID = Settings.Secure.getString(this.contentResolver, Settings.Secure.ANDROID_ID)
 
 
-    private fun checkSwitchandGetNumberOfStressDay(): Int {
-        var numberOfStressDay = 0
+    private fun checkSwitchandGetNumberOfStressDay(): ArrayList<String> {
+        val listStressDay = ArrayList<String>()
         if (switch1.isChecked) {
             val dayList: ArrayList<String> = getDayList()
             for (day in dayList) {
                 var dayStatus = false
                 val timeList = getTimeList(day)
                 for (time in timeList) {
-                    if (dayStatus == false) {
+                    if (!dayStatus) {
                         val timeStatus = checkTime(day, time)
                         if (timeStatus == "Có") {
                             dayStatus = true
-                            numberOfStressDay += 1
+                            listStressDay.add(day)
                         }
                     }
                     else {
+                        Toast.makeText(this, listStressDay.toString(), Toast.LENGTH_SHORT)
                         break
                     }
                 }
             }
-        if (!switch1.isChecked) {
-                numberOfStressDay = -1
-            }
         }
-        return numberOfStressDay
+        return listStressDay
     }
 
     private fun checkTime(time: String, day: String): String {
+        @SuppressLint("HardwareIds")
+        val androidID = Settings.Secure.getString(this.contentResolver, Settings.Secure.ANDROID_ID).toString()
         var status = ""
         val reference = FirebaseDatabase.getInstance().getReference("Data").child(androidID).child(day).child("Measurement").child(time)
         reference.addValueEventListener(object : ValueEventListener {
@@ -80,6 +167,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 status = snapshot.child("predStress").value as String
+                Toast.makeText(applicationContext, "gotTimestatus", Toast.LENGTH_SHORT)
             }
         }
         )
@@ -87,6 +175,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getDayList(): ArrayList<String> {
+        @SuppressLint("HardwareIds")
+        val androidID = Settings.Secure.getString(this.contentResolver, Settings.Secure.ANDROID_ID).toString()
         val dayList = ArrayList<String>()
         val reference = FirebaseDatabase.getInstance().getReference("Data").child(androidID)
         reference.addValueEventListener(object : ValueEventListener {
@@ -98,6 +188,7 @@ class MainActivity : AppCompatActivity() {
                 for (snap in snapshot.children) {
                     dayList.add(snap.value.toString())
                 }
+                Toast.makeText(applicationContext, "gotDayList", Toast.LENGTH_SHORT)
             }
 
         })
@@ -105,6 +196,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getTimeList(day: String): ArrayList<String> {
+        @SuppressLint("HardwareIds")
+        val androidID = Settings.Secure.getString(this.contentResolver, Settings.Secure.ANDROID_ID).toString()
         val timeList = ArrayList<String>()
         val reference = FirebaseDatabase.getInstance().getReference("Data").child(androidID).child(day).child("Measurement")
         reference.addValueEventListener(object : ValueEventListener {
@@ -117,6 +210,7 @@ class MainActivity : AppCompatActivity() {
                 for (snap in snapshot.children) {
                     timeList.add(snap.value.toString())
                 }
+                Toast.makeText(applicationContext, "gotTimeList", Toast.LENGTH_SHORT)
             }
         })
         return timeList
@@ -189,8 +283,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        val RECORDING_TIME = 32.0
-        val CUTOFF_TIME = 14.0
+        val RECORDING_TIME = 12.0
+        val CUTOFF_TIME = 4.0
         var dbHandler : MyDBHandler? = null
     }
     override fun onWindowFocusChanged(hasFocus: Boolean) {

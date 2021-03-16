@@ -1,6 +1,7 @@
 package galaxy.app.stressdetector
 
 import android.app.Activity
+import android.content.Context
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
@@ -14,6 +15,10 @@ class Instruction : AppCompatActivity() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         okButton.setOnClickListener {startDetect()}
+        val sharedPreferences = getSharedPreferences("SwitchState", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("state", switch2.isChecked)
+        editor.apply()
     }
     private fun startDetect(){
         setResult(Activity.RESULT_OK)
