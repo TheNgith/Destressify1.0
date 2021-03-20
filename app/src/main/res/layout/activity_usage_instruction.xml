@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UsageInstruction">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/oswald_bold"
+                    android:paddingTop="40dp"
+                    android:text="@string/usage_instruction_text"
+                    android:textAllCaps="false"
+                    android:textColor="@color/purple_main"
+                    android:textSize="36sp" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="347dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/oswald_regular"
+                    android:text="@string/usage_instruction1"
+                    android:textAlignment="center"
+                    android:textColor="@color/purple_main"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/oswald_bold"
+                    android:text="@string/usage_instruction2_1"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="347dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/oswald_regular"
+                    android:text="@string/usage_instruction2_3"
+                    android:textColor="@android:color/holo_purple"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="347dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/oswald_regular"
+                    android:text="@string/usage_instruction2_2"
+                    android:textAlignment="textStart"
+                    android:textColor="@android:color/holo_purple"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/oswald_bold"
+                    android:text="@string/UserCode_title"
+                    android:textSize="30sp" />
+
+                <EditText
+                    android:id="@+id/editTextTextPersonName3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Name"
+                    android:textAlignment="center"
+                    android:textColor="#9C27B0" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/oswald_bold"
+                android:text="@string/instruction_notify"
+                android:textAlignment="center"
+                android:textColor="#7A7A7A"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="184dp"
+                android:fontFamily="@font/oswald_light"
+                android:text="@string/instruction_notify_content"
+                android:textAlignment="textStart"
+                android:textColor="#9C27B0"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/family_list_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="30dp"
+                android:text="@string/family_list" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="145dp"
+                    android:layout_height="82dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/perceived_stress_button"
+                    app:iconTint="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="145dp"
+                    android:layout_height="82dp"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/return_home_page" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

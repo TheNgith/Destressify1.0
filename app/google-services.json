@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "683701053514",
+    "project_id": "stress-detector-cae4c",
+    "storage_bucket": "stress-detector-cae4c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:683701053514:android:f4f386c7156b92f47ddeb3",
+        "android_client_info": {
+          "package_name": "galaxy.app.stressdetector"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "683701053514-vb4amkfgmq81d6r569v3qmuo4lrkj7d8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAizGMRNQXuQjPt6W_3Xqo6DOtR-R_S0Lo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "683701053514-vb4amkfgmq81d6r569v3qmuo4lrkj7d8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
