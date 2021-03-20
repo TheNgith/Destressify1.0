@@ -11,8 +11,6 @@ class Camera : AppCompatActivity() {
         setContentView(R.layout.activity_camera)
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-        val sharedPreferences = getSharedPreferences("SwitchState", MODE_PRIVATE)
-        val state = sharedPreferences.getBoolean("state", true)
         if (null == savedInstanceState) {
             val cameraFragment = CameraFragment()
             supportFragmentManager.beginTransaction().replace(R.id.container, cameraFragment).commit()

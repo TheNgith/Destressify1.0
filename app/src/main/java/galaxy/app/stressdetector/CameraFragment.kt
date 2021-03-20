@@ -21,6 +21,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
 import android.util.Log
+import android.util.Range
 import android.util.Size
 import android.util.SparseIntArray
 import android.view.LayoutInflater
@@ -42,19 +43,23 @@ import java.nio.ByteBuffer
 import java.util.*
 import java.util.concurrent.Semaphore
 import java.util.concurrent.TimeUnit
+import kotlin.collections.ArrayList
 
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+var fpsRanges: Array<Range <Int>>? = null
+
 
 /**
  * A simple [Fragment] subclass.
  * Use the [CameraFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class CameraFragment() : Fragment() {
+class CameraFragment : Fragment() {
+    var startTime = System.currentTimeMillis()
     // TODO: Rename and change types of parameters
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -290,6 +295,8 @@ class CameraFragment() : Fragment() {
 
                 // We don't use a front facing camera in this sample.
                 val facing = characteristics.get(CameraCharacteristics.LENS_FACING)
+//                fpsRanges = characteristics.get(CameraCharacteristics.CONTROL_AE_AVAILABLE_TARGET_FPS_RANGES)
+//                Log.d("FPS", "SYNC_MAX_LATENCY_PER_FRAME_CONTROL: " + Arrays.toString(fpsRanges))
                 if (facing != null && facing == CameraCharacteristics.LENS_FACING_FRONT) {
                     continue
                 }
@@ -487,7 +494,7 @@ class CameraFragment() : Fragment() {
             }
         }
 
-        private fun unlockFocus(state: String) {
+        private fun unlockFocus() {
             try {
                 // Reset the auto-focus trigger
                 mPreviewRequestBuilder!!.set(
@@ -564,6 +571,8 @@ class CameraFragment() : Fragment() {
                                         CaptureRequest.CONTROL_AF_MODE,
                                         CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE
                                 )
+                                // Set the frame rate of the preview screen. Select a frame rate range depending on the actual situation.
+//                                mPreviewRequestBuilder!!.set(CaptureRequest.CONTROL_AE_TARGET_FPS_RANGE, fpsRanges!![0]);
                                 setAutoFlash(mPreviewRequestBuilder!!)
                                 mPreviewRequest = mPreviewRequestBuilder!!.build()
                                 mCaptureSession!!.setRepeatingRequest(
@@ -683,27 +692,34 @@ class CameraFragment() : Fragment() {
     }
 
     private class GetHeartRate(private val mBitmap: Bitmap) : Runnable {
+        var currentTime = System.currentTimeMillis()
         override fun run() {
-            var red: Long = 0
-            var green: Long = 0
-            var blue: Long = 0
-            val width = mBitmap.width
-            val height = mBitmap.height
-            for (i in 0 until width) {
-                for (j in 0 until height) {
-                    val color = mBitmap.getPixel(i, j)
-                    red += Color.red(color).toLong()
-                    green += Color.green(color).toLong()
-                    blue += Color.blue(color).toLong()
+            currentTime = System.currentTimeMillis()
+            val delta = currentTime - startTime
+            if (delta >= 100) {
+                Log.e("deltaTime", delta.toString() + "ms")
+                var red: Long = 0
+                var green: Long = 0
+                var blue: Long = 0
+                val width = mBitmap.width
+                val height = mBitmap.height
+                for (i in 0 until width) {
+                    for (j in 0 until height) {
+                        val color = mBitmap.getPixel(i, j)
+                        red += Color.red(color).toLong()
+                        green += Color.green(color).toLong()
+                        blue += Color.blue(color).toLong()
+                    }
                 }
+                val redAverage = (red / (width * height)).toInt()
+                val greenAverage = (green / (width * height)).toInt()
+                val blueAverage = (blue / (width * height)).toInt()
+                val colorAverage =
+                        Color.rgb(redAverage, greenAverage, blueAverage)
+                colorValues.add(colorAverage)
+                Log.d("Red", java.lang.Double.toString(redAverage.toDouble()))
+                startTime = System.currentTimeMillis()
             }
-            val redAverage = (red / (width * height)).toInt()
-            val greenAverage = (green / (width * height)).toInt()
-            val blueAverage = (blue / (width * height)).toInt()
-            val colorAverage =
-                Color.rgb(redAverage, greenAverage, blueAverage)
-            colorValues.add(colorAverage)
-            Log.d("Red", java.lang.Double.toString(redAverage.toDouble()))
         }
     }
 

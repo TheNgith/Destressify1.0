@@ -18,7 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StressDetector">
-        <activity android:name=".familyList"></activity>
+        <activity android:name=".familyList" />
         <activity android:name=".StressQuest" />
         <activity android:name=".UsageInstruction" />
         <activity android:name=".ThankYouActivity" />
@@ -30,7 +30,6 @@
         <activity android:name=".Title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -1,11 +1,13 @@
 package galaxy.app.stressdetector
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings.Secure
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_title.*
@@ -13,20 +15,33 @@ import java.util.*
 
 
 class Title : AppCompatActivity() {
+    private val userName = findViewById<EditText>(R.id.userName)
+    private val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+    private val editor = sharedPreferences.edit()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_title)
         val getStarted = findViewById<Button>(R.id.getStarted)
+        val user = sharedPreferences.getString("userName", "")
+        userName.setText(user)
         getStarted.setOnClickListener{mainAc()}
         button7.setOnClickListener{ goToInstruction() }
     }
 
     private fun goToInstruction() {
+        saveUserName()
         val intent = Intent(applicationContext, UsageInstruction::class.java)
         startActivity(intent)
     }
 
+    private fun saveUserName() {
+        editor.putString("userName", userName.text.toString())
+        editor.apply()
+    }
+
     private fun mainAc(){
+        saveUserName()
         val intent = Intent(applicationContext, MainActivity::class.java)
         startActivity(intent)
     }

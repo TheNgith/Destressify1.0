@@ -73,4 +73,5 @@
     <string name="hint_info">Email/Điện thoại</string>
     <string name="notify_activity_header">Danh sách người thân</string>
     <string name="askforflash">Sử dụng đèn Flash</string>
+    <string name="hint_userName">Nhập tên của bạn</string>
 </resources>

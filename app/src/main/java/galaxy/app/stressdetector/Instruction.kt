@@ -8,18 +8,19 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_instruction.*
 
-class Instruction : AppCompatActivity() {
+public class Instruction : AppCompatActivity() {
+//    val sharedPreferences = getSharedPreferences("SwitchState", MODE_PRIVATE)
+//    val editor = sharedPreferences.edit()
+//    editor.putBoolean("state", switch2.isChecked)
+//    editor.apply()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_instruction)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         okButton.setOnClickListener {startDetect()}
-        val sharedPreferences = getSharedPreferences("SwitchState", MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putBoolean("state", switch2.isChecked)
-        editor.apply()
     }
+
     private fun startDetect(){
         setResult(Activity.RESULT_OK)
         finish()
