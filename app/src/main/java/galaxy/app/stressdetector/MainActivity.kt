@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.AsyncTask
-import android.os.AsyncTask.execute
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
@@ -41,19 +40,27 @@ class MainActivity : AppCompatActivity() {
         everydayButton.setOnClickListener{goToEveryday()}
         historyButton.setOnClickListener{showHistory()}
         dbHandler = MyDBHandler(applicationContext)
+        val loadingDialog = loadingDialog(this@MainActivity)
         button8.setOnClickListener{ goToInstruction() }
+        initializeData()
+        loadingDialog.startLoadingDialog()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun initializeData() {
         loadSwitch()
         val listStressDay = checkSwitchandGetNumberOfStressDay()
         if (listStressDay.size > -1) {
             val returnString = consecutive(listStressDay)
             if (returnString != "NAN") {
-                val consecutive = returnString.substring(1..returnString.length).toBoolean()
-                if (consecutive) {
+                val consecutiveConfirm = returnString.substring(1..returnString.length).toBoolean()
+                if (consecutiveConfirm) {
                     contactParent()
                 }
             }
         }
     }
+
     var SHARED_PREFS = "sharedPrefs"
 
     @SuppressLint("CommitPrefEdits")

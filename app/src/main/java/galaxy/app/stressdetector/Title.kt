@@ -15,14 +15,14 @@ import java.util.*
 
 
 class Title : AppCompatActivity() {
-    private val userName = findViewById<EditText>(R.id.userName)
-    private val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-    private val editor = sharedPreferences.edit()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_title)
         val getStarted = findViewById<Button>(R.id.getStarted)
+        val userName = findViewById<EditText>(R.id.userName)
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val user = sharedPreferences.getString("userName", "")
         userName.setText(user)
         getStarted.setOnClickListener{mainAc()}
@@ -36,6 +36,9 @@ class Title : AppCompatActivity() {
     }
 
     private fun saveUserName() {
+        val userName = findViewById<EditText>(R.id.userName)
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
         editor.putString("userName", userName.text.toString())
         editor.apply()
     }
