@@ -46,15 +46,13 @@
 
                 <Button
                     android:id="@+id/button7"
-                    android:layout_width="wrap_content"
+                    android:layout_width="270dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:backgroundTint="@color/purple_200"
                     android:fontFamily="@font/pacifico_regular"
                     android:text="@string/usage_instruction"
                     android:textAllCaps="false"
                     android:textSize="24sp"
-                    app:iconTint="@color/purple_200"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/getStarted" />
@@ -63,7 +61,6 @@
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:fontFamily="@font/oswald_bold"
                     android:text="@string/title"
                     android:textAlignment="center"
@@ -73,35 +70,34 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/icon" />
 
-                <androidx.appcompat.widget.AppCompatButton
+                <Button
                     android:id="@+id/getStarted"
-                    android:layout_width="260dp"
+                    android:layout_width="270dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/rounded_corner"
+                    android:backgroundTint="@color/purple_200"
                     android:drawableTint="@color/purple_200"
                     android:fontFamily="@font/pacifico_regular"
                     android:paddingHorizontal="36dp"
                     android:text="@string/get_started"
                     android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
                     android:textSize="24sp"
-                    android:theme="@style/AppTheme.Button"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/title" />
 
                 <EditText
                     android:id="@+id/userName"
-                    android:layout_width="260dp"
+                    android:layout_width="247dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:ems="10"
                     android:fontFamily="@font/oswald_medium"
                     android:hint="@string/hint_userName"
                     android:inputType="textPersonName"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp"
+                    android:textColor="@color/purple_main"
+                    android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/button7" />

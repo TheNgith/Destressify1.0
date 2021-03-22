@@ -9,7 +9,9 @@ import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.View
+import android.widget.CompoundButton
 import android.widget.Switch
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -26,12 +28,16 @@ import javax.mail.*
 import javax.mail.internet.InternetAddress
 import javax.mail.internet.MimeMessage
 import kotlin.collections.ArrayList
+import kotlin.concurrent.schedule
 
 
 class MainActivity : AppCompatActivity() {
 
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
+        val loadingDialog = loadingDialog(this@MainActivity)
+        loadingDialog.startLoadingDialog()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
@@ -40,15 +46,17 @@ class MainActivity : AppCompatActivity() {
         everydayButton.setOnClickListener{goToEveryday()}
         historyButton.setOnClickListener{showHistory()}
         dbHandler = MyDBHandler(applicationContext)
-        val loadingDialog = loadingDialog(this@MainActivity)
+        val switch1 = findViewById<Switch>(R.id.switch1)
+        switch1.setOnCheckedChangeListener {buttonView, isChecked -> saveSwitch(switch1)}
         button8.setOnClickListener{ goToInstruction() }
         initializeData()
-        loadingDialog.startLoadingDialog()
+        Log.e("initializeData", "success")
+        loadingDialog.dismissDialog()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun initializeData() {
-        loadSwitch()
+        loadSwitch(switch1)
         val listStressDay = checkSwitchandGetNumberOfStressDay()
         if (listStressDay.size > -1) {
             val returnString = consecutive(listStressDay)
@@ -355,15 +363,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     @SuppressLint("UseSwitchCompatOrMaterialCode")
-    private fun loadSwitch() {
-        val switch1 = findViewById<Switch>(R.id.switch1)
+    private fun loadSwitch(switch1: Switch) {
         val sharedPreferences = getSharedPreferences("switchState", MODE_PRIVATE)
-        switch1.isChecked = sharedPreferences.getBoolean("switch", false)
+        val state =  sharedPreferences.getBoolean("switch", false)
+        switch1.isChecked = state
     }
 
     @SuppressLint("UseSwitchCompatOrMaterialCode")
-    private fun saveSwitch() {
-        val switch1 = findViewById<Switch>(R.id.switch1)
+    private fun saveSwitch(switch1: Switch) {
         val sharedPreferences = getSharedPreferences("switchState", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putBoolean("switch", switch1.isChecked)
@@ -371,37 +378,31 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun goToEveryday() {
-        saveSwitch()
         val intent = Intent(applicationContext, Survey::class.java)
         startActivity(intent)
     }
 
     private fun goToInstruction() {
-        saveSwitch()
         val intent = Intent(applicationContext, UsageInstruction::class.java)
         startActivity(intent)
     }
 
     private fun showInstruction(){
-        saveSwitch()
         val intent = Intent(applicationContext, Instruction::class.java)
         startActivityForResult(intent, 2)
     }
 
     private fun showHistory(){
-        saveSwitch()
         val intent = Intent(applicationContext, History::class.java)
         startActivityForResult(intent, 1)
     }
 
     private fun startDetection(){
-        saveSwitch()
         val intent = Intent(applicationContext, Camera::class.java)
         startActivityForResult(intent, 1)
     }
 
     private fun calculateHeartRate(){
-        saveSwitch()
         val intent = Intent(applicationContext, Results::class.java)
         startActivityForResult(intent, 3)
     }
@@ -438,15 +439,15 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-    private class SendEmail: AsyncTask<Message, String, String>() {
-        override fun doInBackground(vararg message: Message?): String? {
-            try {
-                Transport.send(message[0])
-                return "Success"
-            }
-            catch (e: MessagingException) {
-                e.printStackTrace()
-                return "Error"
-            }
+private class SendEmail: AsyncTask<Message, String, String>() {
+    override fun doInBackground(vararg message: Message?): String? {
+        try {
+            Transport.send(message[0])
+            return "Success"
+        }
+        catch (e: MessagingException) {
+            e.printStackTrace()
+            return "Error"
         }
     }
+}

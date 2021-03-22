@@ -7,8 +7,10 @@
     tools:context=".UsageInstruction">
 
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,25 +24,26 @@
 
             <LinearLayout
                 android:id="@+id/linearLayout4"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView11"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/oswald_bold"
                     android:paddingTop="40dp"
                     android:text="@string/usage_instruction_text"
+                    android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textColor="@color/purple_main"
                     android:textSize="36sp" />
 
                 <TextView
                     android:id="@+id/textView12"
-                    android:layout_width="347dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/oswald_regular"
                     android:text="@string/usage_instruction1"
@@ -59,7 +62,7 @@
 
                 <TextView
                     android:id="@+id/textView15"
-                    android:layout_width="347dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/oswald_regular"
                     android:text="@string/usage_instruction2_3"
@@ -68,7 +71,7 @@
 
                 <TextView
                     android:id="@+id/textView14"
-                    android:layout_width="347dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/oswald_regular"
                     android:text="@string/usage_instruction2_2"
@@ -114,12 +117,11 @@
                 android:id="@+id/textView20"
                 android:layout_width="match_parent"
                 android:layout_height="184dp"
-                android:fontFamily="@font/oswald_light"
+                android:fontFamily="@font/oswald_regular"
                 android:text="@string/instruction_notify_content"
                 android:textAlignment="textStart"
                 android:textColor="@android:color/holo_purple"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/family_list_button"

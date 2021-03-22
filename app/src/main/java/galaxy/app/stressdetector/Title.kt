@@ -30,23 +30,36 @@ class Title : AppCompatActivity() {
     }
 
     private fun goToInstruction() {
-        saveUserName()
+        val allow = saveUserName()
         val intent = Intent(applicationContext, UsageInstruction::class.java)
-        startActivity(intent)
+        if (allow) {
+            startActivity(intent)
+        }
     }
 
-    private fun saveUserName() {
+    private fun saveUserName(): Boolean {
         val userName = findViewById<EditText>(R.id.userName)
-        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putString("userName", userName.text.toString())
-        editor.apply()
+        val text = userName.text.toString()
+        var state = true
+        if (text != "") {
+            val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("userName", text)
+            editor.apply()
+        }
+        else {
+            userName.error = "Nhập tên bạn"
+            state = false
+        }
+        return state
     }
 
     private fun mainAc(){
-        saveUserName()
+        val allow = saveUserName()
         val intent = Intent(applicationContext, MainActivity::class.java)
-        startActivity(intent)
+        if (allow) {
+            startActivity(intent)
+        }
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
