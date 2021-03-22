@@ -6,15 +6,13 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import java.sql.SQLException
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.collections.ArrayList
 
 
 class MyDBHandler(context: Context?) :
-    SQLiteOpenHelper(context, DATABASE_NAME, null, 8) {
+    SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     override fun onCreate(db: SQLiteDatabase) {
-        val CREATE_TABLE =
+        val createTable =
             "CREATE TABLE " + TABLE_NAME + "(" +
                     COLUMN_CREATED_AT + " TEXT PRIMARY KEY ," +
                     COLUMN_BPM + " DOUBLE ," +
@@ -23,50 +21,20 @@ class MyDBHandler(context: Context?) :
                     COLUMN_RMSSD + " DOUBLE ," +
                     COLUMN_PPN50 + " DOUBLE " +
                     COLUMN_STRESS + " DOUBLE " + ");"
-        Log.v("TableCreated", CREATE_TABLE)
-        db.execSQL(CREATE_TABLE)
+        Log.v("TableCreated", createTable)
+        db.execSQL(createTable)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         // Add a column
-        try {
-            db.execSQL("ALTER TABLE $TABLE_NAME" + " ADD COLUMN $COLUMN_STRESS")
-        } catch (e: SQLException) {
-            Log.i("ADD COLUMN STRESS", "Stress already exists")
+        if (oldVersion < 9) {
+            try {
+                db.execSQL("ALTER TABLE $TABLE_NAME ADD COLUMN $COLUMN_STRESS")
+            } catch (e: SQLException) {
+                Log.i("ADD COLUMN STRESS", "Stress already exists")
+            }
         }
 
-    }
-    fun loadHandler(): ArrayList<ArrayList<Any>> {
-        val result =
-            ArrayList<ArrayList<Any>>()
-        val query = "SELECT * FROM $TABLE_NAME WHERE 1"
-        val db = this.writableDatabase
-        val cursor = db.rawQuery(query, null)
-        cursor.moveToFirst()
-        while (!cursor.isAfterLast) {
-            val curResult = ArrayList<Any>()
-            if (cursor.getString(cursor.getColumnIndex(COLUMN_CREATED_AT)) != null) {
-                val dateTime = cursor.getString(0)
-                val bpm = cursor.getDouble(1)
-                val avnn = cursor.getDouble(2)
-                val sdnn = cursor.getDouble(3)
-                val rmssd = cursor.getDouble(4)
-                val ppn50 = cursor.getDouble(5)
-                val stress = cursor.getInt(6)
-                curResult.add(dateTime)
-                curResult.add(bpm)
-                curResult.add(avnn)
-                curResult.add(sdnn)
-                curResult.add(rmssd)
-                curResult.add(ppn50)
-                curResult.add(stress)
-                result.add(curResult)
-            }
-            cursor.moveToNext()
-        }
-        cursor.close()
-        db.close()
-        return result
     }
 
     fun addHandler(hd: HeartData) {
@@ -89,8 +57,10 @@ class MyDBHandler(context: Context?) :
         val db = this.writableDatabase
         val cursor = db.rawQuery(query, null)
         if (cursor.count <= 0){
+            cursor.close()
             return false
         }
+        cursor.close()
         return true
     }
 
@@ -162,20 +132,10 @@ class MyDBHandler(context: Context?) :
             return result
         }
 
-    private val dateTime: String
-        private get() {
-            val dateFormat = SimpleDateFormat(
-                "dd MMMM yyyy 'at' hh:mm:ss aaa",
-                Locale.getDefault()
-            )
-            val date = Date()
-            return dateFormat.format(date)
-        }
-
 
 
     companion object {
-        private const val DATABASE_VERSION = 8
+        private const val DATABASE_VERSION = 9
         private const val DATABASE_NAME = "studentDB.db"
         const val TABLE_NAME = "HeartRate"
         const val COLUMN_CREATED_AT = "DateTime"
