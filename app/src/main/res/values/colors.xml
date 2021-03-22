@@ -7,11 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="button_color">#fc0339</color>
-    <color name="pink_Lighter">#e0123f</color>
     <color name="purple_main">#530088</color>
     <color name="glass_white">#80FFFFFF</color>
-    <color name="glass_white_2">#A0FFFFFF</color>
     <color name="glass_purple">#50530088</color>
-    <color name="purple_lighter">#93479A</color>
 </resources>
