@@ -18,10 +18,10 @@ class Advice : AppCompatActivity() {
     private fun option1(){
         val s = intent.extras
         val bPM = s?.get("bPM") as String
-        val aVNN = s?.get("aVNN") as String
-        val sDNN = s?.get("sDNN") as String
-        val rMSSD = s?.get("rMSSD") as String
-        val predStress = s?.get("predStress") as String
+        val aVNN = s.get("aVNN") as String
+        val sDNN = s.get("sDNN") as String
+        val rMSSD = s.get("rMSSD") as String
+        val predStress = s.get("predStress") as String
         option = "time"
         val intent = Intent(applicationContext, AdviceResultActivity::class.java)
         intent.putExtra("bPM", bPM)

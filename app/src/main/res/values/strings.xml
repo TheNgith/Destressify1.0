@@ -27,8 +27,13 @@
     <string name="question_1">Bạn cảm thấy nguyên nhân căng thẳng của bản thân giống với trường hợp nào nhất?</string>
     <string name="stress_name">Căng thẳng</string>
     <string name="stress_time">do áp lực thời gian</string>
+    <string name="stress_unconfident">do cảm giác thiếu chắc chắn</string>
+    <string name="stress_event">do sự kiện bất ngờ</string>
+    <string name="stress_people">liên quan đến con người</string>
     <string name="des_stress_time">Bạn thấy mình khó mà hoàn thành công việc đúng giờ, và một ngày có 24 tiếng dường như chẳng đủ cho bạn.</string>
-    <string name="note_stress_time">Dù thế nào thì, việc bạn cố gắng đã rất đáng khen rồi đó! Đừng ép buộc bản thân quá nha!</string>
+    <string name="des_stress_unconfident">Bạn lo lắng về tương lai của bản thân, sợ việc thất bại, cảm thấy mình thua kém người khác,…</string>
+    <string name="des_stress_event">Có những chuyện không may xảy ra, và giờ bạn cảm thấy mọi thứ cứ rối tinh rối mù lên hết</string>
+    <string name="des_stress_people">Bạn cảm thấy mệt mỏi và sợ hãi khi phải tiếp xúc hay tương tác với người khác</string>
     <string name="loi_khuyen">Lời khuyên:</string>
     <string name="quest_sleeptime">Tối qua bạn ngủ bao nhiêu giờ?</string>
     <string name="hint_sleeptime">Nhập số giờ ngủ ước tính</string>
@@ -62,4 +67,8 @@
     <string name="hint_info">Email/Điện thoại</string>
     <string name="notify_activity_header">Danh sách người thân</string>
     <string name="hint_userName">Nhập tên của bạn</string>
+    <string name="note_stress_time">Dù thế nào thì, việc bạn cố gắng đã rất đáng khen rồi đó! Đừng ép buộc bản thân quá nha!</string>
+    <string name="note_stress_unconfident">Hãy nhớ bạn là một con người tuyệt vời lắm luôn ý, và mọi thứ sẽ ổn thôi!</string>
+    <string name="note_stress_event">Rồi mọi chuyện sẽ qua, mong là bạn luôn giữ được sự lạc quan của mình nghe</string>
+    <string name="note_stress_people">Mỗi người có một tính cách và sức chịu đựng riêng. Ai cũng có lúc cảm thấy căng thẳng mà.</string>
 </resources>

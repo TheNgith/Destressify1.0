@@ -4,9 +4,8 @@ import java.util.ArrayList
 import kotlin.math.pow
 import kotlin.math.sqrt
 
-class HeartDataNew(beatsArray: ArrayList<Double>, avgBPM: Int) {
-    val peaks : ArrayList<Double> = beatsArray
-    val avgBPM = avgBPM
+class HeartDataNew(beatsArray: ArrayList<Double>, private val avgBPM: Int) {
+    private val peaks : ArrayList<Double> = beatsArray
 
     private val rrInterval = ArrayList<Double>()
 
@@ -36,14 +35,12 @@ class HeartDataNew(beatsArray: ArrayList<Double>, avgBPM: Int) {
     }
 
     private fun initRR() {
-        var i = 0
         var prevPeak: Double? = null
-        for (value in peaks) {
+        for ((i, value) in peaks.withIndex()) {
             if (i > 0) {
-                rrInterval.add(value - prevPeak!!)
+                rrInterval.add((value - prevPeak!!) * 1000.0)
             }
             prevPeak = value
-            ++i
         }
     }
 
