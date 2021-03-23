@@ -116,7 +116,7 @@ class CameraX : AppCompatActivity() {
         bpmText = binding.bpmValue
         progressBar = binding.circularProgressBar
         progressBar.apply {
-            progressMax = 64000f
+            progressMax = maxSecs.toFloat()
         }
         cameraExecutor = Executors.newSingleThreadExecutor()
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
@@ -265,7 +265,8 @@ class CameraX : AppCompatActivity() {
         }
         val endTime = System.currentTimeMillis()
         val totalTimeInSecs = (endTime - startTime).toDouble() / 1000.0
-        if (totalTimeInSecs >= 10.0) {
+        if (totalTimeInSecs >= timeInterval.toDouble()) {
+            Log.d("Beats in 9s:", "$beats")
             val bps = (beats.toDouble() / totalTimeInSecs)
             val dpm = (bps * 60.0).toInt()
             if (dpm < 30 || dpm > 180) {
@@ -301,8 +302,9 @@ class CameraX : AppCompatActivity() {
             //Log.d("BPM", "$beatAvg")
             startTime = System.currentTimeMillis()
             beats = 0
-            if (System.currentTimeMillis() - activityStartTime >= 54000) {
+            if (System.currentTimeMillis() - activityStartTime >= maxSecs) {
                 averageBPM = beatAvg
+                Log.d("Beats in 50s", "${peakArray.size}")
                 endActivity()
             }
         }
@@ -340,5 +342,7 @@ class CameraX : AppCompatActivity() {
         fun getAverageBPM():Int{
             return averageBPM
         }
+        private val maxSecs = 30000 + 4000
+        private val timeInterval = 5
     }
 }
