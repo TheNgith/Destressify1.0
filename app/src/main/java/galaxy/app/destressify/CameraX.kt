@@ -343,6 +343,6 @@ class CameraX : AppCompatActivity() {
             return averageBPM
         }
         private val maxSecs = 30000 + 4000
-        private val timeInterval = 5
+        private val timeInterval = 6
     }
 }
