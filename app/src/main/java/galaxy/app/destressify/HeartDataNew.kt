@@ -1,5 +1,6 @@
 package galaxy.app.destressify
 
+import android.util.Log
 import java.util.ArrayList
 import kotlin.math.pow
 import kotlin.math.sqrt
@@ -41,6 +42,9 @@ class HeartDataNew(beatsArray: ArrayList<Double>, private val avgBPM: Int) {
                 rrInterval.add((value - prevPeak!!) * 1000.0)
             }
             prevPeak = value
+        }
+        for (i in rrInterval){
+            Log.d("RR Interval", "$i")
         }
     }
 

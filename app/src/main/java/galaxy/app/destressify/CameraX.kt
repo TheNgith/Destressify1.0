@@ -144,7 +144,7 @@ class CameraX : AppCompatActivity() {
 
     private fun startCamera() {
         startTime = System.currentTimeMillis()
-
+        peakArray = arrayListOf<Double>()
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
 
         cameraProviderFuture.addListener({
